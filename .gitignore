@@ -14,3 +14,7 @@ build/
 build_debug/
 CMakeFiles/
 
+
+tags
+
+CMakeLists.txt.user

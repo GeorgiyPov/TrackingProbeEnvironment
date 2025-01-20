@@ -1,5 +1,8 @@
 #ifndef ROTATE_VECTOR_CLASS_H
 #define ROTATE_VECTOR_CLASS_H
+
+#define WIN32_LEAN_AND_MEAN 1
+
 #include <QDebug>
 #include <Eigen/Eigen>
 #include <Eigen/Dense>

@@ -31,7 +31,7 @@ void ScanatorControlClass::SetInput(const QPair<double,double>& Coord) { this->S
 void ScanatorControlClass::SetToNullReal() { SlotMoveToPos(NullAbsolutePos); }
 void ScanatorControlClass::SetToNullWork() { SlotMoveToPos(NullRelativePos); }
 
-void ScanatorControlClass::SetBlockEnabled(bool OnOff)
+void ScanatorControlClass::SetModuleEnabled(bool OnOff)
 {
   if( OnOff) StateBlock = StateBlockAtWork;
   if(!OnOff) StateBlock = StateBlockDisabled;

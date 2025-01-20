@@ -56,8 +56,8 @@ ProcessFindRotation  = make_shared<RotationFindProcessClass>();
    utiliteThread.setPriority(QThread::NormalPriority);
    //=================================================
 
-   //SlotSetProcessImitation();
-   SlotSetProcessAiming(true);
+   SlotSetProcessImitation(true);
+   //SlotSetProcessAiming(true);
 
 }
 
@@ -81,7 +81,7 @@ void ProcessControllerClass::SlotSetProcessImitation(bool OnOff)
 {
    if(!OnOff) return;
 
-                                           ModuleAiming->SetBlockEnabled(false);
+                                           ModuleAiming->SetModuleEnabled(false);
    ModuleImitatorImage | ModuleImageProc | ModuleAiming | DeviceScanator; ProcessState = ProcessStateList::ProcessImitation; DisplayState();
 }
 

@@ -124,7 +124,7 @@ public:
                                                   //CAMERA CAN GET SIMULTENOUSLY AIM AND BEAM POSITION
   const QPair<double, double>& GetAimingError(); //BEAM POSITION IS SET FROM CAMERA 
 
-  void SetBlockEnabled(bool OnOff); 
+  void SetModuleEnabled(bool OnOff); 
 	int GetID() { return SettingsRegister::GetValue("BLOCK_ID_AIMING");}
 
 	void SetInput           (const QPair<double,double>& Coord);

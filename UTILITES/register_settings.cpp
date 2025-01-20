@@ -3,7 +3,7 @@
 #include <QFile>
 #include <QDir>
 
-static char* TAG_NAME{"[ SETTINGS ]"};
+static const char* TAG_NAME{"[ SETTINGS ]"};
 
 std::map<QString,QString>                SettingsRegister::settings;
 std::map<QString,float>                  SettingsRegister::settings_values;
@@ -37,10 +37,12 @@ void SettingsRegister::LoadSettings()
   QString env_Path = qgetenv("TRACKING_SETTINGS_PATH");
   QString currentPath = QDir::currentPath() + "/DATA/TrackingProject/TrackingSettings.ini";
   QString homePath = QString("/home/broms/DATA/TrackingProject/TrackingSettings.ini");
+  QString homePathWin = QString("D:/DATA/TrackingProject/TrackingSettings.ini");
 
 
 
          std::vector<QString>   LocationList;
+  if(CheckPath(homePathWin))    LocationList.push_back(last_path);
   if(CheckPath(homePath)   )    LocationList.push_back(last_path);
   //if(CheckPath(currentPath))    LocationList.push_back(last_path);
   //if(CheckPath(result_list[0])) LocationList.push_back(last_path);
@@ -58,6 +60,7 @@ void SettingsRegister::LoadSettings()
   AppendSettings("CAMERA_IMAGE_POS",  std::pair<float,float>(20.0,20.0));
   AppendSettings("CAMERA_IMAGE_SIZE", 400.0);
   AppendSettings("CAMERA_IMAGE_SIZE", std::pair<float,float>(400.0,400.0));
+  AppendSettings("DATA_DIR", "D:/DATA");
 
   //SCANATOR +-10V -> +-14 degree
   float ANGLE_RANGE = 2*60*60;

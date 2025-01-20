@@ -10,8 +10,9 @@ AimImageImitatorClass::AimImageImitatorClass(QObject* parent) : ImageSourceInter
 //QString AimImagePath = "D:/DATA/UFO.png"; qDebug() << "LOAD IMAGE: " <<  AimImagePath;
 //QString BlotchImagePath = "D:/DATA/blotch.png"; qDebug() << "LOAD IMAGE: " <<  BlotchImagePath;
 
-QString AimImagePath = "/home/broms/DATA/UFO.png"; qDebug() << "LOAD IMAGE: " <<  AimImagePath;
-QString BlotchImagePath = "/home/broms/DATA/blotch.png"; qDebug() << "LOAD IMAGE: " <<  BlotchImagePath;
+QString DATA_DIR = SettingsRegister::GetString("DATA_DIR");
+QString AimImagePath = QString("%1/UFO.png").arg(DATA_DIR);       qDebug() << "LOAD IMAGE: " <<  AimImagePath;
+QString BlotchImagePath = QString("%1/blotch.png").arg(DATA_DIR); qDebug() << "LOAD IMAGE: " <<  BlotchImagePath;
 
 ImageTestObject = cv::imread(AimImagePath.toStdString(),cv::IMREAD_GRAYSCALE );
 BlotchObject = cv::imread(BlotchImagePath.toStdString(),cv::IMREAD_GRAYSCALE );

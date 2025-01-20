@@ -22,7 +22,6 @@
 #include "widget_aiming_control.h"
 
 
-
 int main(int argc, char* argv[])
 {
 

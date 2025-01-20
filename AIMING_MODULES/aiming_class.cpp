@@ -103,16 +103,16 @@ void AimingClass::MoveAimingPosition(QPair<double, double> RelativeCoord) { Coor
 void AimingClass::Reset()
 {
   qDebug() << TAG << "RESET AIMING";
-  this->SetBlockEnabled(false);
+  this->SetModuleEnabled(false);
   this->ModulePID.ResetPID();
   this->VectorOutput = QPair<double,double>(0,0);
   this->SetAimingSpeedRegim(AimingSlow);
   AimingStatistic.Reset();
   FaultStatistic.Reset();
-  QTimer::singleShot(8000,[this](){this->SetBlockEnabled(true);}); 
+  QTimer::singleShot(8000,[this](){this->SetModuleEnabled(true);}); 
 }
 
-void AimingClass::SetBlockEnabled(bool OnOff) 
+void AimingClass::SetModuleEnabled(bool OnOff) 
 { 
   if( OnOff) StateBlock = StateBlockAtWork; 
   if(!OnOff) StateBlock = StateBlockDisabled; 

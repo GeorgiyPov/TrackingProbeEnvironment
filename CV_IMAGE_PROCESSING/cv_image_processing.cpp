@@ -22,8 +22,9 @@ CVImageProcessing::CVImageProcessing(QObject* parent) : ImageSourceInterface(par
   //if(QFile::exists("D:/DATA/FindingTemplate.png"))
   //ImageTemplate = imread("D:/DATA/FindingTemplate.png",cv::IMREAD_GRAYSCALE);
 
-  if(QFile::exists("/home/broms/DATA/FindingTemplate.png"))
-  ImageTemplate = imread("/home/broms/DATA/FindingTemplate.png",cv::IMREAD_GRAYSCALE);
+  auto ImageFilePath = QString("%1/DATA/FindingTemplate.png").arg(SettingsRegister::GetString("DATA_DIR"));
+  if(QFile::exists(ImageFilePath))
+  ImageTemplate = imread(ImageFilePath.toStdString(),cv::IMREAD_GRAYSCALE);
 
   TemplateRect = cv::Size(ImageTemplate.cols,ImageTemplate.rows);
   

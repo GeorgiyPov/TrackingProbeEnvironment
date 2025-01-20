@@ -4,6 +4,7 @@
 #include <SubstractPair.h>
 #include <DebugStream.h>
 #include <interface_pass_coord.h>
+#include "RotateOptimization_global.h"
 
 #undef slots
 #include <torch/torch.h>
@@ -16,7 +17,7 @@ enum RotateAxis {x_axis = 0, y_axis = 1, z_axis = 2};
 class RotateOperationContainer;
 
 
-class TestDataVectorsContainer
+class ROTATEOPTIMIZATION_EXPORT TestDataVectorsContainer
 {
 public:
 	TestDataVectorsContainer();
@@ -27,7 +28,7 @@ public:
 };
 
 
-class AccumulateDataFilter : public PassTwoCoordClass
+class ROTATEOPTIMIZATION_EXPORT AccumulateDataFilter : public PassTwoCoordClass
 {
 public:
 	AccumulateDataFilter();
@@ -59,7 +60,7 @@ public:
     friend AccumulateDataFilter& operator>>(QPair<double, double> coord, AccumulateDataFilter& Filter);
 };
 
-class RotateDataMeasureengine 
+class ROTATEOPTIMIZATION_EXPORT RotateDataMeasureengine 
 {
 public:
 	RotateDataMeasureengine();
@@ -76,7 +77,7 @@ public:
 	friend void operator>>(RotateDataMeasureengine& Measureengine, RotateOperationContainer& RotateContainer);
 };
 
-class RotateOperationContainer : public PassTwoCoordClass
+class ROTATEOPTIMIZATION_EXPORT RotateOperationContainer : public PassTwoCoordClass
 {
 public:
 	RotateOperationContainer();

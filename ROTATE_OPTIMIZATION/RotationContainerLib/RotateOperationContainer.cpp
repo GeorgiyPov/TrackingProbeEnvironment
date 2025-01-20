@@ -3,7 +3,7 @@
 #include <iostream>
 #include <QDebug>
 #include <QFile>
-static char* TAG = "[ ROTATION ]";
+static const char* TAG = "[ ROTATION ]";
 
 TestDataVectorsContainer::TestDataVectorsContainer()
 {

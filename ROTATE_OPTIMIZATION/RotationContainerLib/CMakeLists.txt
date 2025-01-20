@@ -35,11 +35,20 @@ include_directories("${LIBRARY_DIR}/NN_LIBRARY/LIBTORCH/libtorch/include/torch/c
 include_directories("${SOURCE_DIR}")
 #=====================================================================
 link_directories("${LIBRARY_DIR}/NN_LIBRARY/LIBTORCH/libtorch/lib")
-target_link_libraries(RotateOptimization "${LIBRARY_DIR}/NN_LIBRARY/LIBTORCH/libtorch/lib/libtorch_cpu.so")
-target_link_libraries(RotateOptimization "${LIBRARY_DIR}/NN_LIBRARY/LIBTORCH/libtorch/lib/libtorch.so")
-target_link_libraries(RotateOptimization "${LIBRARY_DIR}/NN_LIBRARY/LIBTORCH/libtorch/lib/libc10.so")
 target_link_libraries(RotateOptimization Qt6::Core)
 #=====================================================================
+
+if (WIN32)
+target_link_libraries(RotateOptimization "${PYTORCH_DIR}/lib/torch_cpu.lib")
+target_link_libraries(RotateOptimization "${PYTORCH_DIR}/lib/torch.lib")
+target_link_libraries(RotateOptimization "${PYTORCH_DIR}/lib/c10.lib")
+endif (WIN32)
+
+if (UNIX)
+target_link_libraries(RotateOptimization "${PYTORCH_DIR}/lib/libtorch_cpu.so")
+target_link_libraries(RotateOptimization "${PYTORCH_DIR}/lib/libtorch.so")
+target_link_libraries(RotateOptimization "${PYTORCH_DIR}/lib/libc10.so")
+endif (UNIX)
 
 target_compile_definitions(RotateOptimization PRIVATE ROTATEOPTIMIZATION_LIBRARY)
 

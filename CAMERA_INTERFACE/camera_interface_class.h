@@ -14,7 +14,7 @@
 #undef signals
 extern "C" 
 { 
-    #include <arv.h> 
+    //#include <arv.h> 
 	#include <stdlib.h>
 }
 #define signals Q_SIGNALS
@@ -22,9 +22,9 @@ extern "C"
 class CameraInterfaceClassAravis;
 struct ArvStreamCallbackData
 {
-	ArvStream *stream;
+	//ArvStream *stream;
 	int counter;
-	gboolean done;
+	//gboolean done;
     CameraInterfaceClassAravis* Receiver;
 
 };
@@ -51,7 +51,7 @@ class CameraInterfaceClassAravis: public ImageSourceInterface, public CameraCont
     public:
     CameraInterfaceClassAravis(QObject* parent = 0);
     ~CameraInterfaceClassAravis();
-	GError *error = NULL;
+	//GError *error = NULL;
     QString TAG_NAME{"[ CAMERA ]"};
     QString CAMERA_INFO{"[ CAMERA NO DATA ]"};
 
@@ -68,7 +68,7 @@ class CameraInterfaceClassAravis: public ImageSourceInterface, public CameraCont
 
     int  InitCamera();
     void DeinitCamera();
-    void PutNewFrameToStorage(ArvBuffer* buffer);
+    //void PutNewFrameToStorage(ArvBuffer* buffer);
     QTimer timerDisplayTestImage;
 
     cv::Mat ImageToProcess;
@@ -88,7 +88,7 @@ class CameraInterfaceClassAravis: public ImageSourceInterface, public CameraCont
     std::vector<QRect>          CameraRects{2};
 
 
-	ArvCamera *camera;
+	//ArvCamera *camera;
     std::vector<uint8_t*> Buffers;
     std::vector<uint8_t*>::iterator CurrentBuffer;
 

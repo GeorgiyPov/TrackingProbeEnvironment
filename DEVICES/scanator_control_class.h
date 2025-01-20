@@ -36,7 +36,7 @@ public:
     bool isAtLimit();
 	void SetToNullReal();
 	void SetToNullWork();
-	void SetBlockEnabled(bool OnOff);
+	void SetModuleEnabled(bool OnOff);
 
 	TimeIntegratorClass PortMoveVelocity; // EMULATE MOVE WITH VELOCITY, INTEGRATOR LINKED TO SlotMoveToPos
 

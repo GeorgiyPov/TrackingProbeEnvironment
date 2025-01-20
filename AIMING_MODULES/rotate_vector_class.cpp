@@ -62,6 +62,7 @@ const QPair<double, double>& RotateVectorClass::GetOutput()
 RotateVectorClass& RotateVectorClass::Inverse()
 {
 	RotateMatrix = this->RotateMatrix.inverse().eval();
+    return *this;
 }
 
 

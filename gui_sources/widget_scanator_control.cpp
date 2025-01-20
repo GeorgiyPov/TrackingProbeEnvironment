@@ -58,7 +58,7 @@ void WidgetScanatorControl::LinkToDevice(std::shared_ptr<ScanatorControlClass> E
 				connect(ui->butStartStopWork, &QPushButton::toggled, 
 				[this, EngineModule](bool OnOff)             
 	            {
-                    EngineModule->SetBlockEnabled(OnOff);
+                    EngineModule->SetModuleEnabled(OnOff);
 				});
 
    QObject::connect(&timerUpdateState,SIGNAL(timeout()), this, SLOT(SlotDisplayScanatorState()));

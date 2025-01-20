@@ -39,26 +39,26 @@ void RotationFindProcessClass::SlotStartRotationFind(bool StartStop)
 
 void RotationFindProcessClass::SlotMakeStep()
 {
-	auto CoordBase = BaseObject->GetOutput();     
-	auto CoordRot  = RotationObject->GetOutput();
-
-	//CoordBase >> InputTransform >> CoordBase;  // DEFAULT NO TRANSFORM SCALE = 1;
-	//CoordRot >> OutputTransform >> CoordRot;  // DEFAULT NO TRANSFORM SCALE = 1;
-
-	auto& AimCoord = RotationContainer.MeasureFilter.GetWaitInputCoord();
-	BaseObject->SetInput(AimCoord);
-
-  CoordBase >> RotationContainer.MeasureFilter >> RotationContainer;
-  CoordRot >>  RotationContainer.MeasureFilter >> RotationContainer;
-  
-  if(RotationContainer.IsDataFull()) StopProcess();
-
-    qDebug() << TAG << "WAIT: " << AimCoord.first 
-                                << AimCoord.second 
-                                << RotationContainer.MeasureFilter.DataFilter.accumulate_counter;
-
-    qDebug() << TAG << " INPUT : " << CoordBase.first << CoordBase.second 
-	                  << " OUTPUT: " << CoordRot.first  << CoordRot.second;
-
+//	auto CoordBase = BaseObject->GetOutput();     
+//	auto CoordRot  = RotationObject->GetOutput();
+//
+//	//CoordBase >> InputTransform >> CoordBase;  // DEFAULT NO TRANSFORM SCALE = 1;
+//	//CoordRot >> OutputTransform >> CoordRot;  // DEFAULT NO TRANSFORM SCALE = 1;
+//
+//	auto& AimCoord = RotationContainer.MeasureFilter.GetWaitInputCoord();
+//	BaseObject->SetInput(AimCoord);
+//
+//  CoordBase >> RotationContainer.MeasureFilter >> RotationContainer;
+//  CoordRot >>  RotationContainer.MeasureFilter >> RotationContainer;
+//  
+//  if(RotationContainer.IsDataFull()) StopProcess();
+//
+//    qDebug() << TAG << "WAIT: " << AimCoord.first 
+//                                << AimCoord.second 
+//                                << RotationContainer.MeasureFilter.DataFilter.accumulate_counter;
+//
+//    qDebug() << TAG << " INPUT : " << CoordBase.first << CoordBase.second 
+//	                  << " OUTPUT: " << CoordRot.first  << CoordRot.second;
+//
 }
 

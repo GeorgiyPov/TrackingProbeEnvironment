@@ -39,6 +39,10 @@ if(EXISTS "${LIBRARY_DIR}/IMAGE_PROCESSING/OPENCV/opencv451")
 set(CV_VERSION "opencv451")
 endif()
 
+if(EXISTS "${LIBRARY_DIR}/IMAGE_PROCESSING/OPENCV/opencv470")
+set(CV_VERSION "opencv470")
+endif()
+
 set(OPENCV_LIB_DIR "${LIBRARY_DIR}/IMAGE_PROCESSING/OPENCV/${CV_VERSION}/")
 set(QT_LIB_DIR "${LIBRARY_DIR}/Qt653/6.5.3/${COMPILER}")
 set(PYTORCH_DIR "${LIBRARY_DIR}/NN_LIBRARY/LIBTORCH/${TORCH_VERSION}/")
@@ -114,11 +118,12 @@ include_directories("${PROJECT_SOURCE_DIR}/TRANSMISSION/DATA_STRUCTURES")
 include_directories("${PROJECT_SOURCE_DIR}/TRANSMISSION/EMBEDED_RING_BUFFER") 
 include_directories("${PROJECT_SOURCE_DIR}/TRANSMISSION/GENERIC_MESSAGES") 
 include_directories("${PROJECT_SOURCE_DIR}/TRANSMISSION/TRANSMISSION_MODULES") 
-include_directories("/home/broms/LIBRARY/MATH_LIBRARY") 
 
 
-include_directories("${LIBRARY_DIR}/IMAGE_PROCESSING/opencv470/build/include")
+include_directories("${LIBRARY_DIR}/IMAGE_PROCESSING/${CV_VERSION}/build/include")
+include_directories("${LIBRARY_DIR}/MATH_LIBRARY/")
 include_directories("C:/HEADERS_STD")
+message("MATH LIBRARY: ${LIBRARY_DIR}/MATH_LIBRARY/")
 
 #include_directories("${LIBRARY_DIR}/MATH_LIBRARY")
 #include_directories("${LIBRARY_DIR}/COMMON_LIBRARRY/boost_1_68_0/boost_1_68_0")
@@ -129,10 +134,12 @@ include_directories("C:/HEADERS_STD")
 #include_directories("../${PROJECT_SOURCE_DIR}")
 
 #=========================ARAVIS CAMRA LIBRARY ============================
+
+if (UNIX)
 include_directories("/usr/local/include/aravis-0.8")
 include_directories("/usr/include/glib-2.0")
 include_directories("/usr/lib/x86_64-linux-gnu/glib-2.0/include")
-
+endif (UNIX)
 #=========================SUBPROJECTS============================
 
 add_subdirectory("ROTATE_OPTIMIZATION/RotationContainerLib")
@@ -214,29 +221,29 @@ target_link_libraries(ImageProcProject Qt6::Network)
 target_link_libraries(ImageProcProject Qt6::Core)
 target_link_libraries(ImageProcProject Qt6::PrintSupport)
 
+if (UNIX)
 target_link_libraries(ImageProcProject /lib/x86_64-linux-gnu/libglib-2.0.so)
 target_link_libraries(ImageProcProject /lib/x86_64-linux-gnu/libgobject-2.0.so)
 target_link_libraries(ImageProcProject /usr/local/lib/x86_64-linux-gnu/libaravis-0.8.so)
 target_link_libraries(ImageProcProject "${CMAKE_CURRENT_SOURCE_DIR}/DEVICES/LaserPointerControlLib/libLaserControlLib.so")
 #target_link_libraries(ImageProcProject "${CMAKE_CURRENT_SOURCE_DIR}/DEVICES/MotorImitatorLib/libMotorControlLib.so")
 
+target_link_libraries(ImageProcProject "${PYTORCH_DIR}/lib/libtorch_cpu.so")
+target_link_libraries(ImageProcProject "${PYTORCH_DIR}/lib/libtorch.so")
+target_link_libraries(ImageProcProject "${PYTORCH_DIR}/lib/libc10.so")
+target_link_libraries(ImageProcProject "${CMAKE_CURRENT_SOURCE_DIR}/build/ROTATE_OPTIMIZATION/RotationContainerLib/libRotateOptimization.so")
+endif (UNIX)
 
-#target_link_libraries(ImageProcProject ${TORCH_PROCESS_MODULE})
 if (WIN32)
 target_link_libraries(ImageProcProject "${PYTORCH_DIR}/lib/torch_cpu.lib")
 target_link_libraries(ImageProcProject "${PYTORCH_DIR}/lib/torch.lib")
 target_link_libraries(ImageProcProject "${PYTORCH_DIR}/lib/c10.lib")
+target_link_libraries(ImageProcProject "${CMAKE_CURRENT_SOURCE_DIR}/build/ROTATE_OPTIMIZATION/RotationContainerLib/RotateOptimization.lib")
 endif (WIN32)
 
-if (UNIX)
-target_link_libraries(ImageProcProject "${PYTORCH_DIR}/lib/libtorch_cpu.so")
-target_link_libraries(ImageProcProject "${PYTORCH_DIR}/lib/libtorch.so")
-target_link_libraries(ImageProcProject "${PYTORCH_DIR}/lib/libc10.so")
-endif (UNIX)
 
 
 #target_link_libraries(ImageProcProject onnxruntime.so)
-target_link_libraries(ImageProcProject "${CMAKE_CURRENT_SOURCE_DIR}/build/ROTATE_OPTIMIZATION/RotationContainerLib/libRotateOptimization.so")
 
 #link_directories("${LIBRARY_DIR}/NN_LIBRARY/libtorch/lib")
 #target_link_libraries(ImageProcProject "/home/broms/PROGRAM_LIBRARY/NN_LIBRARY/libtorch/lib/libtorch_cpu.so")

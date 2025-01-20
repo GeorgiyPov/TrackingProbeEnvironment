@@ -1,4 +1,5 @@
-#include "transform_coord_class.h"  
+#include "transform_coord_class.h"
+#include <math.h>
 
 
 const QPair<double, double>& TransformCoordClass::GetOutput() { return TransformedCoord; }
@@ -6,7 +7,7 @@ void TransformCoordClass::SetInput(const QPair<double,double>& Coord) { Transfor
 
 TransformCoordClass::TransformCoordClass()
 {
-	Scale = M_PI / (60.0 * 60.0 * 180.0);
+    Scale = 3.14 / (60.0 * 60.0 * 180.0);
 	Offset = 0;
 	TransformCoord = [this](QPair<double,double> CoordError)
 	{

@@ -55,12 +55,12 @@ void WidgetAimingControl::LinkToModule(std::shared_ptr<AimingClass> Module)
 				if (checked)
 				{
               		ui.checkWorkBlock->setText(QString::fromLocal8Bit("Работа"));
-					Module->SetBlockEnabled(true);
+					Module->SetModuleEnabled(true);
 				}
 				else
 				{
               		ui.checkWorkBlock->setText(QString::fromLocal8Bit("Отключено"));
-					Module->SetBlockEnabled(false);
+					Module->SetModuleEnabled(false);
 				}
 			});
 
